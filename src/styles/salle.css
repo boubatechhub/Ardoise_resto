@@ -1,0 +1,272 @@
+/* Espace salle : plan de salle, fiche table, file de validation, disponibilites. */
+
+/* ---------- salle ---------- */
+
+  .admin__entete {
+    flex: none;
+    background: var(--surface);
+    border-bottom: 1px solid var(--bordure);
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .admin__titre { font-size: 20px; font-weight: 600; }
+  .admin__compteur { font-size: 15px; color: var(--encre-douce); }
+  .admin__compteur b { color: var(--attente); font-weight: 600; }
+  .admin__onglets { margin-left: auto; display: flex; gap: 8px; }
+  .admin__onglet {
+    background: var(--surface);
+    border: 1px solid var(--bordure-forte);
+    border-radius: 8px;
+    padding: 0 16px;
+    height: 44px;
+    font-size: 15px;
+  }
+  .admin__onglet[aria-pressed="true"] { background: var(--encre); border-color: var(--encre); color: #FFF; font-weight: 600; }
+
+  .admin__corps { flex: 1; overflow-y: auto; padding: 16px 20px 32px; }
+  .file { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+  .colonne__titre {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--encre-douce);
+    padding: 22px 0 10px;
+    position: sticky;
+    top: -16px;
+    background: var(--fond);
+    z-index: 1;
+  }
+  .colonne__nombre { font-variant-numeric: tabular-nums; color: var(--encre); }
+  .colonne__cartes { display: flex; flex-direction: column; gap: 12px; }
+
+  .demande {
+    background: var(--surface);
+    border: 1px solid var(--bordure);
+    border-left: 3px solid var(--bordure-forte);
+    border-radius: var(--rayon);
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .demande--attente { border-left-color: var(--attente); }
+  .demande--cuisine { border-left-color: var(--confirmee); }
+  .demande--appel { border-left-color: var(--accent); background: #FFFDFB; }
+  .demande__haut { display: flex; align-items: baseline; gap: 10px; }
+  .demande__table { font-size: 20px; font-weight: 600; }
+  .demande__age { font-size: 13px; color: var(--encre-douce); margin-left: auto; font-variant-numeric: tabular-nums; }
+  .demande__etiquette { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+  .demande__lignes { font-size: 16px; display: flex; flex-direction: column; gap: 3px; }
+  .demande__ligne { display: flex; gap: 8px; }
+  .demande__ligne b { font-weight: 600; font-variant-numeric: tabular-nums; }
+  .demande__ligne--indispo { color: var(--indispo); text-decoration: line-through; }
+  .demande__alerte { font-size: 14px; color: var(--refus); }
+  .demande__sujet { font-size: 16px; }
+  .demande__actions { display: flex; gap: 8px; }
+  .demande__actions .bouton { flex: 1; }
+
+  .dispo__mention { font-size: 15px; color: var(--encre-douce); margin-bottom: 10px; }
+  .dispo__section {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--encre-douce);
+    margin-top: 18px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--bordure);
+  }
+  .disponibilites { max-width: 720px; display: flex; flex-direction: column; gap: 6px; }
+  .interrupteur {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    background: none;
+    border: 0;
+    border-bottom: 1px solid var(--bordure);
+    padding: 12px 4px;
+    text-align: left;
+    font-size: 16px;
+    min-height: 56px;
+  }
+  .interrupteur:hover { background: #F5F1EB; }
+  .interrupteur__nom { flex: 1; }
+  .interrupteur[aria-pressed="false"] .interrupteur__nom { color: var(--indispo); }
+  .interrupteur__etat { font-size: 14px; color: var(--encre-douce); width: 128px; text-align: right; }
+  .interrupteur[aria-pressed="false"] .interrupteur__etat { color: var(--indispo); }
+  .piste { flex: none; width: 52px; height: 30px; border-radius: 15px; background: var(--indispo); padding: 3px; display: flex; }
+  .interrupteur[aria-pressed="true"] .piste { background: var(--confirmee); justify-content: flex-end; }
+  .piste__pouce { width: 24px; height: 24px; border-radius: 50%; background: #FFF; }
+
+  .interrupteur--cuisine { min-height: 72px; font-size: 20px; padding: 14px 6px; gap: 20px; }
+  .interrupteur--cuisine .interrupteur__etat { font-size: 17px; width: 168px; }
+  .interrupteur--cuisine .piste { width: 68px; height: 40px; border-radius: 20px; padding: 4px; }
+  .interrupteur--cuisine .piste__pouce { width: 32px; height: 32px; }
+
+  .detail {
+    background: var(--surface);
+    border-radius: 12px;
+    width: 100%;
+    max-width: 560px;
+    max-height: 100%;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .detail__entete { display: flex; align-items: baseline; gap: 12px; }
+  .detail__ajout { display: flex; gap: 8px; }
+  .detail__ajout select {
+    flex: 1;
+    height: 48px;
+    border-radius: 8px;
+    border: 1px solid var(--bordure-forte);
+    background: var(--surface);
+    padding: 0 12px;
+    font: inherit;
+    color: inherit;
+  }
+  .detail__actions { display: flex; gap: 10px; }
+  .detail__actions .bouton { flex: 1; }
+  .motifs { display: flex; flex-direction: column; gap: 8px; }
+  .motifs__titre { font-size: 15px; font-weight: 600; }
+
+  .notice { background: var(--encre); color: #F5F1EC; border-radius: 8px; padding: 12px 16px; font-size: 15px; margin-bottom: 16px; }
+  .vide { border: 1px dashed var(--bordure-forte); border-radius: var(--rayon); padding: 20px; font-size: 15px; color: var(--encre-douce); }
+  .vide--cuisine { font-size: 18px; padding: 24px; }
+  .vide__titre { font-weight: 600; color: var(--encre); display: block; margin-bottom: 4px; }
+
+  
+/* ---------- plan de salle ---------- */
+
+  .salle__compteurs { display: flex; gap: 18px; flex-wrap: wrap; font-size: 15px; color: var(--encre-douce); }
+  .salle__compteurs b { color: var(--encre); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .salle__compteurs .urgent { color: var(--alerte); }
+
+  .plan { display: grid; grid-template-columns: repeat(auto-fill, minmax(268px, 1fr)); gap: 14px; }
+  .table-carte {
+    background: var(--surface);
+    border: 1px solid var(--bordure);
+    border-left: 4px solid var(--bordure-forte);
+    border-radius: var(--rayon);
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: left;
+    width: 100%;
+  }
+  .table-carte--libre { border-left-color: var(--bordure); background: transparent; border-style: dashed; }
+  .table-carte--occupee { border-left-color: var(--bordure-forte); }
+  .table-carte--action { border-left-color: var(--attente); }
+  .table-carte--encaisser { border-left-color: var(--alerte); }
+  .table-carte--reglee { border-left-color: var(--confirmee); }
+  .table-carte__haut { display: flex; align-items: center; gap: 10px; }
+  .table-carte__num { font-size: 30px; font-weight: 600; line-height: 1.05; letter-spacing: -0.01em; }
+  .table-carte--libre .table-carte__num { color: var(--indispo); }
+  .table-carte__pastille { margin-left: auto; }
+  .table-carte__meta { font-size: 13px; color: var(--encre-douce); }
+  .table-carte__montant { font-size: 24px; font-weight: 600; font-variant-numeric: tabular-nums; display: flex; align-items: baseline; gap: 10px; }
+  .table-carte__montant span { font-size: 13px; font-weight: 400; color: var(--encre-douce); }
+  .table-carte__badges { display: flex; flex-wrap: wrap; gap: 6px; }
+  .badge {
+    font-size: 12.5px;
+    font-weight: 600;
+    border-radius: 6px;
+    padding: 3px 9px;
+    border: 1px solid;
+    white-space: nowrap;
+  }
+  .badge--valider { color: var(--attente); border-color: #EFDFC6; background: var(--attente-fond); }
+  .badge--pret { color: var(--confirmee); border-color: #CBD9AE; background: var(--confirmee-fond); }
+  .badge--appel { color: var(--accent); border-color: #E3C9B8; background: #FCF4EF; }
+  .badge--addition { color: var(--alerte); border-color: #E8CFC5; background: var(--refus-fond); }
+
+  
+/* ---------- fiche table ---------- */
+
+  .fiche-table {
+    background: var(--surface);
+    border-radius: 12px;
+    width: 100%;
+    max-width: 620px;
+    max-height: 100%;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .fiche-table__entete { display: flex; align-items: center; gap: 12px; }
+  .fiche-table__num { font-size: 26px; font-weight: 600; }
+  .fiche-table__meta { font-size: 13px; color: var(--encre-douce); margin-left: auto; }
+  .bloc-titre {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--encre-douce);
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .cmd {
+    border: 1px solid var(--bordure);
+    border-left: 3px solid var(--bordure-forte);
+    border-radius: 8px;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .cmd + .cmd { margin-top: 8px; }
+  .cmd--attente { border-left-color: var(--attente); }
+  .cmd--cuisine { border-left-color: var(--attente); }
+  .cmd--pret { border-left-color: var(--confirmee); }
+  .cmd--servie { border-left-color: var(--bordure-forte); }
+  .cmd--morte { opacity: 0.6; }
+  .cmd__haut { display: flex; align-items: center; gap: 10px; }
+  .cmd__age { font-size: 12.5px; color: var(--encre-douce); margin-left: auto; }
+  .cmd__lignes { font-size: 15px; display: flex; flex-direction: column; gap: 2px; }
+  .cmd__lignes b { font-variant-numeric: tabular-nums; }
+  .cmd__actions { display: flex; gap: 8px; flex-wrap: wrap; }
+  .cmd__origine { font-size: 12px; color: var(--encre-douce); }
+
+  .total-ligne {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 20px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    border-top: 1px solid var(--bordure-forte);
+    padding-top: 12px;
+  }
+  .total-ligne small { font-size: 13px; font-weight: 400; color: var(--encre-douce); }
+  .sous-total { display: flex; justify-content: space-between; font-size: 14px; color: var(--encre-douce); }
+
+  .moyens { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .moyen {
+    border: 1px solid var(--bordure-forte);
+    background: var(--surface);
+    border-radius: 8px;
+    height: 52px;
+    font-size: 14.5px;
+  }
+  .moyen[aria-pressed="true"] { border-color: var(--accent); background: #FCF4EF; color: var(--accent); font-weight: 600; }
+  .moyen:hover { border-color: var(--encre-douce); }
+
+  .saisie__liste { display: flex; flex-direction: column; max-height: 260px; overflow-y: auto; border: 1px solid var(--bordure); border-radius: 8px; }
+  .saisie__ligne { display: flex; align-items: center; gap: 12px; padding: 8px 12px; border-bottom: 1px solid var(--bordure); }
+  .saisie__ligne:last-child { border-bottom: 0; }
+  .saisie__nom { flex: 1; font-size: 15px; }
+  .saisie__prix { font-size: 13px; color: var(--encre-douce); font-variant-numeric: tabular-nums; }

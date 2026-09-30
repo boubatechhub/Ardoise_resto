@@ -1,0 +1,56 @@
+/* Chrome de demonstration : selecteur d'espace et mise en scene. */
+
+/* ---------- chrome de demonstration ---------- */
+
+  .demo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    background: var(--demo);
+    color: #F5F1EC;
+    padding: 8px 16px;
+    min-height: 48px;
+  }
+  .demo__marque { font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; font-size: 13px; }
+  .demo__marque span { color: #B9AFA4; font-weight: 400; letter-spacing: 0.02em; text-transform: none; }
+  .demo__groupe { display: flex; gap: 2px; background: #3A342E; border-radius: 8px; padding: 3px; }
+  .demo__onglet {
+    background: none;
+    border: 0;
+    color: #E2DBD3;
+    padding: 7px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+  .demo__onglet[aria-pressed="true"] { background: var(--fond); color: var(--encre); font-weight: 600; }
+  .demo__rejouer {
+    margin-left: auto;
+    background: none;
+    border: 1px solid #4E463F;
+    color: #E2DBD3;
+    border-radius: 8px;
+    padding: 7px 14px;
+    font-size: 14px;
+  }
+  .demo__rejouer:hover { border-color: #7A7169; }
+
+  
+/* ---------- scene ---------- */
+
+  .scene { height: calc(100vh - 48px); display: grid; }
+  .scene--simple { grid-template-columns: 1fr; }
+  .scene--deux { grid-template-columns: 412px 1fr; }
+  .scene--trois { grid-template-columns: 372px 1fr 1fr; }
+
+  .colonne-client { position: relative; display: flex; flex-direction: column; overflow: hidden; background: var(--fond); }
+  .scene--deux .colonne-client,
+  .scene--trois .colonne-client { border-right: 1px solid var(--bordure-forte); }
+  .scene--simple .colonne-client { max-width: 448px; width: 100%; margin: 0 auto; border-inline: 1px solid var(--bordure); }
+  .client__defilement { flex: 1; overflow-y: auto; scroll-behavior: smooth; }
+
+  .colonne-admin,
+  .colonne-cuisine,
+  .colonne-gestion { position: relative; display: flex; flex-direction: column; overflow: hidden; }
+  .scene--trois .colonne-cuisine { border-left: 1px solid var(--bordure-forte); }

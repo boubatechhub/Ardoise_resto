@@ -1,0 +1,194 @@
+/* Reinitialisation, typographie, boutons, cartes, bandeaux, voiles. */
+
+/* ---------- boutons ---------- */
+
+  .bouton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0 18px;
+    height: 48px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+  }
+  .bouton--primaire { background: var(--accent); color: #FFF; }
+  .bouton--primaire:hover { background: #9C4619; }
+  .bouton--primaire:disabled { background: var(--indispo); }
+  .bouton--secondaire { background: transparent; border-color: var(--bordure-forte); font-weight: 400; }
+  .bouton--secondaire:hover { border-color: var(--encre-douce); }
+  .bouton--refus { background: transparent; border-color: #D8B3A5; color: var(--refus); }
+  .bouton--refus:hover { border-color: var(--refus); }
+  .bouton--large { width: 100%; }
+  .bouton--admin { height: 52px; }
+  .bouton--cuisine { height: 64px; font-size: 19px; }
+  .bouton--petit { height: 40px; font-size: 14.5px; padding: 0 12px; font-weight: 400; }
+
+  .barre-client {
+    flex: none;
+    background: var(--surface);
+    border-top: 1px solid var(--bordure);
+    padding: 12px 16px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .barre-client .bouton--primaire { flex: 1; }
+  .appel-salle {
+    flex: none;
+    height: 48px;
+    padding: 0 14px;
+    border-radius: 8px;
+    border: 1px solid var(--bordure-forte);
+    background: var(--surface);
+    font-size: 15px;
+  }
+  .appel-salle:hover { border-color: var(--accent); color: var(--accent); }
+
+  
+/* ---------- bandeaux, cartes, listes ---------- */
+
+  .bandeau {
+    border-radius: var(--rayon);
+    padding: 14px 16px;
+    font-size: 15px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .bandeau--info { background: var(--attente-fond); border: 1px solid #EFDFC6; color: #7A4A10; }
+  .bandeau--appel { background: var(--confirmee-fond); border: 1px solid #DCE4CA; color: #3B5416; }
+  .bandeau p { margin: 0; }
+  .bandeau__fermer {
+    margin-left: auto;
+    flex: none;
+    background: none;
+    border: 0;
+    font-size: 20px;
+    line-height: 1;
+    padding: 0 4px;
+    color: inherit;
+    opacity: 0.7;
+  }
+  .bandeau__fermer:hover { opacity: 1; }
+
+  .carte { background: var(--surface); border: 1px solid var(--bordure); border-radius: var(--rayon); padding: 16px; }
+
+  .recap { display: flex; flex-direction: column; gap: 2px; }
+  .recap__ligne {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--bordure);
+    font-size: 16px;
+  }
+  .recap__ligne:last-of-type { border-bottom: 0; }
+  .recap__qte { font-weight: 600; font-variant-numeric: tabular-nums; }
+  .recap__prix { font-variant-numeric: tabular-nums; color: var(--encre-douce); white-space: nowrap; }
+  .recap__total {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 14px;
+    margin-top: 8px;
+    border-top: 1px solid var(--bordure-forte);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+  .recap__total span:last-child { white-space: nowrap; }
+
+  .panier__lignes { display: flex; flex-direction: column; }
+  .panier__ligne {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--bordure);
+  }
+  .panier__ligne:last-child { border-bottom: 0; }
+  .panier__vignette { flex: none; width: 56px; height: 56px; border-radius: 6px; overflow: hidden; }
+  .panier__vignette .visuel { aspect-ratio: 1; padding: 4px; }
+  .plat__texte { flex: 1; min-width: 0; }
+  .plat__nom { font-size: 16px; line-height: 1.35; }
+  .plat__prix { font-size: 14px; color: var(--encre-douce); font-variant-numeric: tabular-nums; margin-top: 2px; }
+
+  .titre-ecran { font-size: 24px; font-weight: 600; letter-spacing: -0.01em; }
+  .sous-titre { font-size: 15px; color: var(--encre-douce); }
+  .lien-retour {
+    background: none;
+    border: 0;
+    padding: 4px 0;
+    font-size: 15px;
+    color: var(--encre-douce);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    align-self: flex-start;
+  }
+  .lien-retour:hover { color: var(--encre); }
+
+  .repli { border-top: 1px dashed var(--bordure-forte); padding-top: 16px; font-size: 14px; color: var(--encre-douce); }
+  .repli button {
+    background: none;
+    border: 0;
+    padding: 0;
+    font-size: 14px;
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  
+/* ---------- voile et feuilles ---------- */
+
+  .voile {
+    position: absolute;
+    inset: 0;
+    background: rgba(28, 25, 23, 0.42);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    z-index: 20;
+    padding: 16px;
+  }
+  .voile--centre { align-items: center; }
+  .feuille {
+    background: var(--surface);
+    border-radius: 14px;
+    width: 100%;
+    max-width: 416px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .feuille__titre { font-size: 20px; font-weight: 600; }
+  .feuille__choix {
+    text-align: left;
+    background: var(--surface);
+    border: 1px solid var(--bordure-forte);
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 16px;
+    min-height: 52px;
+  }
+  .feuille__choix:hover { border-color: var(--accent); color: var(--accent); }
+
+/* etats d'ecran plein */
+
+.chargement {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 32px;
+  text-align: center;
+}
+.chargement__titre { font-size: 20px; font-weight: 600; }
+.chargement__detail { font-size: 15px; color: var(--encre-douce); max-width: 44ch; }
+.chargement .bouton { margin-top: 8px; }

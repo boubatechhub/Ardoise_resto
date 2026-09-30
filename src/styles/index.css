@@ -1,0 +1,10 @@
+/* Point d'entree des styles. L'ordre des imports est significatif. */
+
+@import './tokens.css';
+@import './base.css';
+@import './demo.css';
+@import './client.css';
+@import './salle.css';
+@import './cuisine.css';
+@import './gestion.css';
+@import './mise-en-page.css';

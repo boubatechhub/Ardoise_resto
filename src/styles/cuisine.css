@@ -1,0 +1,88 @@
+/* Espace cuisine : file de preparation et plats epuises. */
+
+/* ---------- cuisine ---------- */
+
+  .cuisine__entete {
+    flex: none;
+    background: var(--surface);
+    border-bottom: 1px solid var(--bordure);
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .cuisine__titre { font-size: 22px; font-weight: 600; }
+  .cuisine__titre span { font-weight: 400; color: var(--encre-douce); }
+  .cuisine__bouton {
+    margin-left: auto;
+    background: var(--surface);
+    border: 1px solid var(--bordure-forte);
+    border-radius: 8px;
+    padding: 0 20px;
+    height: 60px;
+    font-size: 18px;
+  }
+  .cuisine__bouton:hover { border-color: var(--encre-douce); }
+  .cuisine__corps { flex: 1; overflow-y: auto; padding: 16px 20px 32px; }
+
+  .prep { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+  .prep__titre {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--encre-douce);
+    padding: 20px 0 12px;
+    position: sticky;
+    top: -16px;
+    background: var(--fond);
+    z-index: 1;
+  }
+  .prep__cartes { display: flex; flex-direction: column; gap: 14px; }
+  .prep-carte {
+    background: var(--surface);
+    border: 1px solid var(--bordure);
+    border-left: 3px solid var(--attente);
+    border-radius: var(--rayon);
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .prep-carte--pret { border-left-color: var(--confirmee); }
+  .prep-carte__haut { display: flex; align-items: baseline; gap: 12px; }
+  .prep-carte__table { font-size: 34px; font-weight: 600; line-height: 1.05; letter-spacing: -0.01em; }
+  .prep-carte__age { font-size: 16px; color: var(--encre-douce); margin-left: auto; font-variant-numeric: tabular-nums; }
+  .prep-carte__etiquette {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid #E3C9B8;
+    border-radius: 6px;
+    padding: 2px 8px;
+  }
+  .prep-carte__lignes { display: flex; flex-direction: column; gap: 6px; font-size: 20px; }
+  .prep-carte__ligne { display: flex; gap: 12px; }
+  .prep-carte__ligne b { font-weight: 600; font-variant-numeric: tabular-nums; min-width: 20px; }
+  .prep-carte--pret .prep-carte__table { font-size: 26px; }
+  .prep-carte--pret .prep-carte__lignes { font-size: 18px; }
+
+  .epuises { max-width: 760px; display: flex; flex-direction: column; }
+  .epuises__entete { display: flex; align-items: center; gap: 16px; margin-bottom: 12px; }
+  .retour {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    border: 1px solid var(--bordure-forte);
+    background: var(--surface);
+    font-size: 24px;
+    line-height: 1;
+    display: grid;
+    place-items: center;
+  }
+  .retour:hover { border-color: var(--encre-douce); }
+  .epuises__titre { font-size: 22px; font-weight: 600; }
+  .epuises__compteur { margin-left: auto; font-size: 18px; color: var(--encre-douce); font-variant-numeric: tabular-nums; }
+  .epuises__mention { margin-top: 20px; font-size: 17px; color: var(--encre-douce); border-top: 1px solid var(--bordure); padding-top: 16px; }

@@ -1,0 +1,25 @@
+/* Points de rupture et preferences de mouvement. */
+
+@media (max-width: 1400px) {
+    .scene--trois { grid-template-columns: 340px 1fr 1fr; }
+    .scene--trois .file { grid-template-columns: 1fr; }
+    .scene--trois .prep { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 1200px) {
+    .prep { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 900px) {
+    .scene--deux { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; }
+    .scene--trois { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr 1fr; }
+    .scene--deux .colonne-client,
+    .scene--trois .colonne-client { border-right: 0; border-bottom: 1px solid var(--bordure-forte); }
+    .scene--trois .colonne-cuisine { border-left: 0; border-top: 1px solid var(--bordure-forte); }
+  }
+  @media (max-width: 760px) {
+    .file { grid-template-columns: 1fr; }
+    .duo { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+    .client__defilement { scroll-behavior: auto; }
+  }

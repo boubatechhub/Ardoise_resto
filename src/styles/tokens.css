@@ -1,0 +1,46 @@
+/* Jetons de design : couleurs, polices, rayons. Aucune valeur en dur ailleurs. */
+
+:root {
+    --fond: #FAF8F5;
+    --surface: #FFFFFF;
+    --encre: #1C1917;
+    --encre-douce: #6F665E;
+    --bordure: #E7E1D8;
+    --bordure-forte: #D6CDC1;
+    --accent: #B4531F;
+    --attente: #B45309;
+    --attente-fond: #FDF6EC;
+    --confirmee: #3F6212;
+    --confirmee-fond: #F2F5EA;
+    --indispo: #A8A29E;
+    --refus: #9A3412;
+    --refus-fond: #FBF0EC;
+    --demo: #26211D;
+    --rayon: 10px;
+    --police: "Instrument Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --serif: "Fraunces", Georgia, "Times New Roman", serif;
+    /* teintes des tuiles sans photo : seule exception documentee a la regle une-seule-couleur */
+    --tuile-1: #EDE6DA;
+    --tuile-2: #E5E9DB;
+    --tuile-3: #F1E3D9;
+    --tuile-4: #E3E6E8;
+  }
+
+  body {
+    background: var(--fond);
+    color: var(--encre);
+    font-family: var(--police);
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  * { box-sizing: border-box; }
+
+  button { font: inherit; color: inherit; cursor: pointer; }
+  button:disabled { cursor: not-allowed; }
+
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+
+  h1, h2, h3, p, ul, ol, dl, figure { margin: 0; }
+  ul { padding: 0; list-style: none; }
